@@ -34,7 +34,7 @@ pipeline{
                 expression { params.action == 'destroy' }
             }
             steps{
-                sh "terraform workspace select dev"
+                sh "terraform workspace select prod"
                 sh "terraform destroy -var-file=prod.tfvars -auto-approve"
             }
         }
