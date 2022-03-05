@@ -16,7 +16,7 @@ pipeline{
                 expression { params.action == 'plan' }
             }
             steps{
-                sh "terraform workspace select dev"
+                sh "terraform workspace select prod"
                 sh "terraform plan"
             }
         }
@@ -25,7 +25,7 @@ pipeline{
                 expression { params.action == 'apply' }
             }
             steps{
-                sh "terraform workspace select dev"
+                sh "terraform workspace select prod"
                 sh "terraform apply -var-file=prod.tfvars -auto-approve"
             }
         }
