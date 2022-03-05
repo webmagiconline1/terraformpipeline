@@ -24,7 +24,7 @@ pipeline{
                 expression { params.action == 'apply' }
             }
             steps{
-                sh "terraform apply -auto-approve"
+                sh "terraform apply -var-file=dev.tfvars -auto-approve"
             }
         }
         stage("destroy"){
@@ -32,7 +32,7 @@ pipeline{
                 expression { params.action == 'destroy' }
             }
             steps{
-                sh "terraform destroy -auto-approve"
+                sh "terraform destroy -var-file=dev.tfvars -auto-approve"
             }
         }
     }
